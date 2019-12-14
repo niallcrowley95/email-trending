@@ -6,27 +6,28 @@ email-trending scrapes articles linked to top reddit posts in the last 24 hours 
 
 Setup
 --------
-Clone this repo to your system
+**Clone** this repo to your system
 
 ``git clone https://github.com/niallcrowley95/email-trending``
 
 
 
-Run setup.py file in a venv
+**Run setup.py file** in a venv
 
 ``py setup.py``
 
 
-**Configure the config.json file** found in ``\email-trending\src\config`` to your specs. See Config Setup section below on how to setup.
+**Configure the config.json file** found in ``\email-trending\src\config`` to your specs. 
+  See Config Setup section below on how to setup.
 
 
 
-Run the script
+**Run the script**
 
 ``py \email-trending\src\main.py``
 
 
-**Bonus Tip:** Set this up to run on a server and schedule to run with `crontab` or `windows task scheduler` every morning for a morning catchup email
+  **Bonus Tip:** Set this up to run on a server and schedule to run with `crontab` or `windows task scheduler` every morning for a morning catchup email
 
 
 Config Setup
@@ -59,5 +60,5 @@ Config Setup
   This contains the CSS styling that will be placed into the html email when rendered.
 
 
-  CSS is directly placed in the html tag ``style="padding 10px; color: #000000"`` as many email clients will not enable to use of a CSS file or in the head tag. But be careful when adding a lot of styling because if the email file size is greater than 100kb, gmail will not display the whole text body
+  CSS is directly placed in the html tag ``style="padding 10px; color: #000000"`` as many email clients will not enable the use of a CSS file or in the head tag. Be careful when adding a lot of styling, if the email file size is greater than 100kb gmail will not display the whole text body
 

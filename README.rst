@@ -31,33 +31,33 @@ Run the script
 
 Config Setup
 ----------------
-**``config.json``**
+``config.json``
 
-Customize what news is sent and your own personal settings
+  Customize what news is sent and your own personal settings
 
-Navigate to the `config.json` file in ``\email-trending\src\config``
+  Navigate to the `config.json` file in ``\email-trending\src\config``
 
-reddit:
+  reddit:
 
-- `categories`: Each dict key will be its own section. Adjust the list for what subreddits should be scraped
-- `use_ratio`: If set to true will use the upvotes / subscribers ratio to adjust for smaller subreddits
-- `exclude`: What domains you don't want to be scraped and will be skipped
-- `timeframe`: How many days to go back
-- `amount`: Amount of articles to be returned per section
-- `credentials`: Reddit API credentials. Setup your reddit API credentials at https://www.reddit.com/prefs/apps/
-
-
-email:
-
-- `sender`: Gmail account to send from. For added security it is recommended to setup a throwaway gmail account
-- `sender_pwrd`: Sender password
-- `send_to`: list of recipients
+  - `categories`: Each dict key will be its own section. Adjust the list for what subreddits should be scraped
+  - `use_ratio`: If set to true will use the upvotes / subscribers ratio to adjust for smaller subreddits
+  - `exclude`: What domains you don't want to be scraped and will be skipped
+  - `timeframe`: How many days to go back
+  - `amount`: Amount of articles to be returned per section
+  - `credentials`: Reddit API credentials. Setup your reddit API credentials at https://www.reddit.com/prefs/apps/
 
 
-**``style.json``**
+  email:
 
-This contains the CSS styling that will be placed into the html email when rendered.
+  - `sender`: Gmail account to send from. For added security it is recommended to setup a throwaway gmail account
+  - `sender_pwrd`: Sender password
+  - `send_to`: list of recipients
 
 
-CSS is directly placed in the html tag ``style="padding 10px; color: #000000"`` as many email clients will not enable to use of a CSS file or in the head tag. But be careful when adding a lot of styling because if the email file size is greater than 100kb, gmail will not display the whole text body
+``style.json``
+
+  This contains the CSS styling that will be placed into the html email when rendered.
+
+
+  CSS is directly placed in the html tag ``style="padding 10px; color: #000000"`` as many email clients will not enable to use of a CSS file or in the head tag. But be careful when adding a lot of styling because if the email file size is greater than 100kb, gmail will not display the whole text body
 

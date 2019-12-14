@@ -18,6 +18,8 @@ Setup
 
 
 **Configure the config.json file** found in ``\email-trending\src\config`` to your specs. 
+  
+  
   See Config Setup section below on how to setup.
 
 

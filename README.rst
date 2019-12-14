@@ -1,7 +1,8 @@
-===========================
-Get popular article content
-===========================
+===========================================
+Get popular article content emailed to you
+===========================================
 email-trending scrapes articles linked to top reddit posts in the last 24 hours and emails them to you.
+
 
 Setup
 --------
@@ -10,17 +11,20 @@ Clone this repo to your system
 ``git clone https://github.com/niallcrowley95/email-trending``
 
 
+
 Run setup.py file in a venv
 
 ``py setup.py``
 
 
-Configure the config.json file found in ``\email-trending\src\config`` to your specs. See Config Setup section below on how to setup.
+**Configure the config.json file** found in ``\email-trending\src\config`` to your specs. See Config Setup section below on how to setup.
+
 
 
 Run the script
 
 ``py \email-trending\src\main.py``
+
 
 Config Setup
 ----------------
@@ -46,20 +50,3 @@ email:
 
 
 **Bonus Tip:** Set this up to run on a server and schedule to run with `crontab` or `windows task scheduler` every morning for a morning catchup email
-
-A bit more in depth
---------------------
-
-email-trending uses the reddit api wrapper, ``praw``, to get top posts from specified subreddits. Subreddits are specified in config file.
-Articles are systematically scraped, using ``newspaper3k``, and summarised info is submitted into a dict containing:
-
-- URL Link
-- Title
-- Authors
-- Keywords
-- Summary
-
-In the case that an article cannot be scraped, the next article on the list, ordered by upvotes, will be attempted.
-A maximum of 15 articles is set to avoid the possibility of the process running for too long.
-This number can be changed in the config file with ``max_articles``
-

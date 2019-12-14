@@ -1,0 +1,9 @@
+Cython
+jinja2
+pandas
+pandas-datareader
+pathlib
+praw
+newspaper3k
+requests
+

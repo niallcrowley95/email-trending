@@ -1,0 +1,12 @@
+*.sln
+*.pyc
+*/__pycache__/
+*.pyproj
+*logs/
+*.vs/
+*.vscode/
+*env/
+*src/data/*
+*.idea/*
+*build/*
+*source/*

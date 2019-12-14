@@ -1,0 +1,43 @@
+{
+  "logging": {
+    "dir": "logs/",
+    "filename": "app.log"
+  },
+  "markets": {
+    "run": true,
+    "tickers": ["AAPL", "MSFT", "AMZN", "TSLA", "SPY"]
+  },
+  "reddit": {
+    "categories":{
+      "Politics": {
+        "subreddits": ["politics"]
+      },
+      "Worldnews": {
+        "subreddits": ["worldnews", "news"]
+      },
+      "Technology": {
+        "subreddits": ["technology"]
+      },
+      "Economy": {
+        "subreddits": ["economy"]
+      }
+    },
+    "use_ratio": true,
+    "exclude": ["reddit", "twitter", "i.redd", "imgur"],
+    "timeframe": 1,
+    "amount": 2,
+    "praw_credentials": {
+      "client_id": "REDDIT CLIENT ID HERE",
+      "client_secret": "REDDIT CLIENT SECRET HERE",
+      "password": "REDDIT PASSWORD",
+      "username": "REDDIT USERNAME",
+      "user_agent": "REDDIT API USER AGENT",
+      "pem_file_loc": "/config/"
+    }
+  },
+  "email": {
+    "sender": "sender@gmail.com (set this as yourself or setup a separate email account)",
+    "sender_pwrd": "SENDER PASSWORD",
+    "send_to": ["you@gmail.com", "yourfriend@gmail.com"]
+  }
+}

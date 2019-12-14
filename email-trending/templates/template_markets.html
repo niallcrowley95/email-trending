@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>email-trending</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body style="{{style.body_style}}">
+
+	<table cellspacing="0" width="100%">
+		<tr>
+			<td></td>
+			<td width="600"><h2 style="{{style.logo_style}}">email-trending</h2></td>
+			<td></td>
+		</tr>
+	</table>
+
+	<table cellspacing="0" width="100%">
+		<tr>
+			<td></td>
+			<td width="600" style="{{style.section_title_style}}">Markets</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td width="600">
+					<table width="100%" style="{{style.table_style}}">
+					  <tr style="{{style.table_style}}">
+						<th></th>
+						<th>Price</th>
+						<th>Change</th>
+					  </tr>
+						{% for ticker in markets %}
+							<tr style="{{style.table_style}}">
+								<td style="{{style.table_style_cell}}">{{ticker.ticker}}</td>
+								<td style="{{style.table_style_cell}}">{{ticker.price}}</td>
+								{% if ticker.change > 0 %}
+									<td style="{{style.change_up_style}}">{{ticker.change}}%</td>
+								{% elif ticker.change == 0 %}
+									<td style="{{style.change_nomvmt_style}}">{{ticker.change}}%</td>
+								{% else %}
+									<td style="{{style.change_down_style}}">{{ticker.change}}%</td>
+								{% endif %}
+							</tr>
+						{% endfor %}
+					</table>
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td width="600"><p style="{{style.quote_style}}"><b>"{{quote.quote}}"</b><br/><i>- {{quote.author}}</i></p></td>
+			<td></td>
+		</tr>
+	</table>
+
+	{% for section in sections %}
+		<table cellspacing="0" width="100%">
+			<tr>
+				<td></td>
+				<td width="600" style="{{style.section_title_style}}">{{section}}</td>
+				<td></td>
+			</tr>
+			{% for item in sections[section] %}
+				<tr>
+					<td></td>
+					<td width="600" style="{{style.header_style}}">{{item.title}}</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td width="600"><p style="{{style.para_style}}">{{item.content}}</p></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td width="600"><a href="{{item.link}}" style="{{style.link_style}}">(Full Article)</a></td>
+					<td></td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% endfor %}
+
+	<table cellspacing="0" width="100%">
+		<tr>
+			<td></td>
+			<td width="600"><p style="{{style.para_style}}"><a href="https://github.com/niallcrowley95">Github</a></p></td>
+			<td></td>
+		</tr>
+	</table>
+
+</body>
+</html>

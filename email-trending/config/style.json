@@ -1,0 +1,17 @@
+{
+  "body_style": "font-family: Google sans, Calibri, Andale, Tahoma, Verdana, Arial;",
+  "header_style": "color: #015668; margin-top: 10px; padding: 10px 5px 0px 5px; font-weight: 500; font-size: 18px; text-align: left;",
+  "logo_style": "color: #015668; font-weight: 700; text-align: center; font-size: 24px; padding: 10px;",
+  "container_style": "border-top-radius: 5px; width: 95%; border: 0.5px solid gray; margin: 5px 5px 5px 5px; border-radius: 10px; box-shadow: 5px 5px 5px lightgrey;",
+  "internal-img_style": "margin-bottom: 5px; display: block; margin-left: auto; margin-right: auto; width: 100%;",
+  "para_style": "padding: 10px 10px 1px 10px; color: #000000; font-size: 16px;",
+  "link_style": "padding: 0px 10px 12px 10px; color: #015668; font-size: 14px;",
+  "quote_style": "padding: 10px; color: #000000; font-size: 16px; text-align: center",
+  "centre-para_style": "text-align: center;",
+  "section_title_style": "color: #263f44; padding: 10px 5px 10px 5px; font-weight: 600; font-size: 20px; border-bottom: 1pt solid #ffd369;",
+  "table_style": "width: 100%; text-align: center; font-size: 16px;",
+  "table_style_cell": "border-top: 0.4px solid lightgrey",
+  "change_up_style": "color: green; border-top: 0.4px solid lightgrey",
+  "change_down_style": "color: red; border-top: 0.4px solid lightgrey",
+  "change_nomvmt_style": "border-top: 0.4px solid lightgrey"
+}

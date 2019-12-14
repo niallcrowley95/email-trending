@@ -27,6 +27,7 @@ def main():
     sections = {}
 
     # collect article data for each category, add to sections var
+    sections['articles'] = {}
     for category in CONFIG["reddit"]["categories"]:
         print(f"\nCollecting data for {category} section...")
         logging.info(f"Collecting data for {category} section...")
@@ -39,7 +40,7 @@ def main():
             amount=CONFIG["reddit"]["amount"]
         )
         top_articles = reddit.get_top_articles(pd_dataframe=True)
-        sections[category] = []
+        sections['articles'][category] = []
 
         # add additional blank columns
         top_articles["keywords"] = ""
@@ -66,7 +67,7 @@ def main():
             if top_articles['summary'].at[i].strip() == "":
                 continue
             # add relevant info to sections dict for email building
-            sections[category].append({"title": top_articles['title'].at[i],
+            sections['articles'][category].append({"title": top_articles['title'].at[i],
                                        "link": top_articles['url'].at[i],
                                        "content": top_articles['summary'].at[i]})
             misc.print_progressbar(i + 1, len(top_articles), prefix="Summarizing articles:")
@@ -75,22 +76,24 @@ def main():
     logging.debug("Rendering email template")
     # use the markets section or not
     print("Building html email template")
-    quote = misc.get_quote()
+    sections['quote'] = misc.get_quote()
     if CONFIG["markets"]["run"]:
-        markets = []
+        sections['markets'] = []
         today = datetime.today()
         # take 5 days back for weekends and public holidays
         past = today - timedelta(days=5)
         for ticker in CONFIG["markets"]["tickers"]:
-            temp = securityinfo.get_sec_info(ticker=ticker,
-                                             start_date=past.strftime("%Y-%m-%d"),
-                                             end_date=today.strftime("%Y-%m-%d"))
-            markets.append({"ticker": ticker,
+            try:
+                temp = securityinfo.get_sec_info(ticker=ticker,
+                                                 start_date=past.strftime("%Y-%m-%d"),
+                                                 end_date=today.strftime("%Y-%m-%d"))
+            except Exception as e:
+                logging.warning(f"Cannot get quote for {ticker}:\n{e}")
+                continue
+            sections['markets'].append({"ticker": ticker,
                             "price": temp["close"],
                             "change": temp['change_pc']})
-        html = renderhtml.get_render_markets(style=CSS_STYLE, sections=sections, markets=markets, quote=quote)
-    else:
-        html = renderhtml.get_render(style=CSS_STYLE, sections=sections, quote=quote)
+    html = renderhtml.get_render(style=CSS_STYLE, sections=sections)
 
     # send email
     logging.debug("Sending email")
@@ -99,7 +102,7 @@ def main():
                            sender_pwd=CONFIG['email']['sender_pwrd'],
                            to_list=CONFIG['email']['to_list'],
                            html_content=html,
-                           subject="Your Catchup!")
+                           subject="email-trending")
 
 
 if __name__ == '__main__':

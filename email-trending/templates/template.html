@@ -19,34 +19,82 @@
 			<td></td>
 		</tr>
 	</table>
-
-	{% for section in sections %}
+	{% if sections.markets is defined or sections.quote is defined %}
 		<table cellspacing="0" width="100%">
-			<tr>
-				<td></td>
-				<td width="600" style="{{style.section_title_style}}">{{section}}</td>
-				<td></td>
-			</tr>
-			{% for item in sections[section] %}
-				<tr>
-					<td></td>
-					<td width="600" style="{{style.header_style}}">{{item.title}}</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td width="600"><p style="{{style.para_style}}">{{item.content}}</p></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td width="600"><p style="{{style.para_style}}">{{item.content}}</p><a href="{{item.link}}" style="{{style.link_style}}"> (Full Article)</a></td>
-					<td></td>
-				</tr>
-			{% endfor %}
-		</table>
-	{% endfor %}
+			{% if sections.markets is defined %}
+				{% block market_quotes %}
+					<tr>
+						<td></td>
+						<td width="600" style="{{style.section_title_style}}">Markets</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td width="600">
+								<table width="100%" style="{{style.table_style}}">
+								  <tr style="{{style.table_style}}">
+									<th></th>
+									<th>Price</th>
+									<th>Change</th>
+								  </tr>
+									{% for ticker in sections.markets %}
+										<tr style="{{style.table_style}}">
+											<td style="{{style.table_style_cell}}">{{ticker.ticker}}</td>
+											<td style="{{style.table_style_cell}}">{{ticker.price}}</td>
+											{% if ticker.change > 0 %}
+												<td style="{{style.change_up_style}}">{{ticker.change}}%</td>
+											{% elif ticker.change == 0 %}
+												<td style="{{style.change_nomvmt_style}}">{{ticker.change}}%</td>
+											{% else %}
+												<td style="{{style.change_down_style}}">{{ticker.change}}%</td>
+											{% endif %}
+										</tr>
+									{% endfor %}
+								</table>
+						</td>
+						<td></td>
+					</tr>
+				{% endblock market_quotes %}
+			{% endif %}
 
+			{% if sections.quote is defined %}
+				<tr>
+					<td></td>
+					<td width="600"><p style="{{style.quote_style}}"><b>"{{sections.quote.quote}}"</b><br/><i>- {{sections.quote.author}}</i></p></td>
+					<td></td>
+				</tr>
+			{% endif %}
+		</table>
+	{% endif %}
+
+	{% if sections.articles is defined %}
+		{% for section in sections.articles %}
+			<table cellspacing="0" width="100%">
+				<tr>
+					<td></td>
+					<td width="600" style="{{style.section_title_style}}">{{section}}</td>
+					<td></td>
+				</tr>
+				{% for item in sections['articles'][section] %}
+					<tr>
+						<td></td>
+						<td width="600" style="{{style.header_style}}">{{item.title}}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td width="600"><p style="{{style.para_style}}">{{item.content}}</p></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td width="600"><p style="{{style.para_style}}">{{item.content}}</p><a href="{{item.link}}" style="{{style.link_style}}"> (Full Article)</a></td>
+						<td></td>
+					</tr>
+				{% endfor %}
+			</table>
+		{% endfor %}
+	{% endif %}
 	<table cellspacing="0" width="100%">
 		<tr>
 			<td></td>

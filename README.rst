@@ -26,8 +26,13 @@ Run the script
 ``py \email-trending\src\main.py``
 
 
+**Bonus Tip:** Set this up to run on a server and schedule to run with `crontab` or `windows task scheduler` every morning for a morning catchup email
+
+
 Config Setup
 ----------------
+**``config.json``**
+
 Customize what news is sent and your own personal settings
 
 Navigate to the `config.json` file in ``\email-trending\src\config``
@@ -49,4 +54,10 @@ email:
 - `send_to`: list of recipients
 
 
-**Bonus Tip:** Set this up to run on a server and schedule to run with `crontab` or `windows task scheduler` every morning for a morning catchup email
+**``style.json``**
+
+This contains the CSS styling that will be placed into the html email when rendered.
+
+
+CSS is directly placed in the html tag ``style="padding 10px; color: #000000"`` as many email clients will not enable to use of a CSS file or in the head tag. But be careful when adding a lot of styling because if the email file size is greater than 100kb, gmail will not display the whole text body
+

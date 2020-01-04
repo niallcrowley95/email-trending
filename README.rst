@@ -5,7 +5,7 @@
 
 |Generic badge|
 
-.. |Generic badge| image:: https://img.shields.io/badge/<SUBJECT>-<STATUS>-<COLOR>.svg
+.. |Generic badge| image:: https://img.shields.io/badge/Python-3.6+-green.svg
    :target:
    
    

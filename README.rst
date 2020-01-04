@@ -1,6 +1,11 @@
 ===========================================
-Get popular article content emailed to you
+**email-trending** - Get popular article content emailed to you
 ===========================================
+
+
+[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+
+
 email-trending scrapes articles linked to top reddit posts in the last 24 hours and emails them to you.
 
 

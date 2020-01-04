@@ -3,12 +3,10 @@
 ===========================================
 
 
-|Generic badge|
+|PyPI pyversions|
 
-.. |Generic badge| image:: https://img.shields.io/badge/Python-3.6+-green.svg
-   :target:
-   
-   
+.. |PyPI pyversions| image:: https://img.shields.io/pypi/pyversions/ansicolortags.svg
+   :target: https://pypi.python.org/pypi/ansicolortags/
 |MIT license|
 
 .. |MIT license| image:: https://img.shields.io/badge/License-MIT-blue.svg

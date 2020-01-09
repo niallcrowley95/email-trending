@@ -1,65 +1,76 @@
-===========================
-Get popular article content
-===========================
+===========================================
+**email-trending** - Get popular article content emailed to you
+===========================================
+
+
+|PyPI pyversions|
+
+.. |PyPI pyversions| image:: https://img.shields.io/pypi/pyversions/ansicolortags.svg
+   :target: https://pypi.python.org/pypi/ansicolortags/
+|MIT license|
+
+.. |MIT license| image:: https://img.shields.io/badge/License-MIT-blue.svg
+   :target: https://lbesson.mit-license.org/
 email-trending scrapes articles linked to top reddit posts in the last 24 hours and emails them to you.
+
 
 Setup
 --------
-Clone this repo to your system
+**Clone** this repo to your system
 
 ``git clone https://github.com/niallcrowley95/email-trending``
 
 
-Run setup.py file in a venv
+
+**Run setup.py file** in a venv
 
 ``py setup.py``
 
 
-Configure the config.json file found in ``\email-trending\src\config`` to your specs. See Config Setup section below on how to setup.
+**Configure the config.json file** found in ``\email-trending\src\config`` to your specs. 
+  
+  
+  See Config Setup section below on how to setup.
 
 
-Run the script
+
+**Run the script**
 
 ``py \email-trending\src\main.py``
 
+
+  **Bonus Tip:** Set this up to run on a server and schedule to run with `crontab` or `windows task scheduler` every morning for a morning catchup email
+
+
 Config Setup
 ----------------
-Customize what news is sent and your own personal settings
+``config.json``
 
-Navigate to the `config.json` file in ``\email-trending\src\config``
+  Customize what news is sent and your own personal settings
 
-reddit:
+  Navigate to the `config.json` file in ``\email-trending\src\config``
 
-- `categories`: Each dict key will be its own section. Adjust the list for what subreddits should be scraped
-- `use_ratio`: If set to true will use the upvotes / subscribers ratio to adjust for smaller subreddits
-- `exclude`: What domains you don't want to be scraped and will be skipped
-- `timeframe`: How many days to go back
-- `amount`: Amount of articles to be returned per section
-- `credentials`: Reddit API credentials. Setup your reddit API credentials at https://www.reddit.com/prefs/apps/
+  reddit:
 
-
-email:
-
-- `sender`: Gmail account to send from. For added security it is recommended to setup a throwaway gmail account
-- `sender_pwrd`: Sender password
-- `send_to`: list of recipients
+  - `categories`: Each dict key will be its own section. Adjust the list for what subreddits should be scraped
+  - `use_ratio`: If set to true will use the upvotes / subscribers ratio to adjust for smaller subreddits
+  - `exclude`: What domains you don't want to be scraped and will be skipped
+  - `timeframe`: How many days to go back
+  - `amount`: Amount of articles to be returned per section
+  - `credentials`: Reddit API credentials. Setup your reddit API credentials at https://www.reddit.com/prefs/apps/
 
 
-**Bonus Tip:** Set this up to run on a server and schedule to run with `crontab` or `windows task scheduler` every morning for a morning catchup email
+  email:
 
-A bit more in depth
---------------------
+  - `sender`: Gmail account to send from. For added security it is recommended to setup a throwaway gmail account
+  - `sender_pwrd`: Sender password
+  - `send_to`: list of recipients
 
-email-trending uses the reddit api wrapper, ``praw``, to get top posts from specified subreddits. Subreddits are specified in config file.
-Articles are systematically scraped, using ``newspaper3k``, and summarised info is submitted into a dict containing:
 
-- URL Link
-- Title
-- Authors
-- Keywords
-- Summary
+``style.json``
 
-In the case that an article cannot be scraped, the next article on the list, ordered by upvotes, will be attempted.
-A maximum of 15 articles is set to avoid the possibility of the process running for too long.
-This number can be changed in the config file with ``max_articles``
+  This contains the CSS styling that will be placed into the html email when rendered.
+
+
+  CSS is directly placed in the html tag ``style="padding 10px; color: #000000"`` as many email clients will not enable the use of a CSS file or in the head tag. Be careful when adding a lot of styling, if the email file size is greater than 100kb gmail will not display the whole text body
 

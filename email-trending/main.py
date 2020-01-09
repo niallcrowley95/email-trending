@@ -24,10 +24,9 @@ logging.basicConfig(level=logging.WARNING,
 def main():
     """Runs all processes for scraping and storing articles"""
     print("Starting email-trending process...")
-    sections = {}
+    sections = {'articles': {}}
 
     # collect article data for each category, add to sections var
-    sections['articles'] = {}
     for category in CONFIG["reddit"]["categories"]:
         print(f"\nCollecting data for {category} section...")
         logging.info(f"Collecting data for {category} section...")
@@ -68,8 +67,8 @@ def main():
                 continue
             # add relevant info to sections dict for email building
             sections['articles'][category].append({"title": top_articles['title'].at[i],
-                                       "link": top_articles['url'].at[i],
-                                       "content": top_articles['summary'].at[i]})
+                                                   "link": top_articles['url'].at[i],
+                                                   "content": top_articles['summary'].at[i]})
             misc.print_progressbar(i + 1, len(top_articles), prefix="Summarizing articles:")
 
     # build the email html
@@ -91,8 +90,8 @@ def main():
                 logging.warning(f"Cannot get quote for {ticker}:\n{e}")
                 continue
             sections['markets'].append({"ticker": ticker,
-                            "price": temp["close"],
-                            "change": temp['change_pc']})
+                                        "price": temp["close"],
+                                        "change": temp['change_pc']})
     html = renderhtml.get_render(style=CSS_STYLE, sections=sections)
 
     # send email

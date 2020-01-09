@@ -12,6 +12,9 @@ from datetime import datetime, timedelta
 # this is to make it OS agnostic
 config_folder = pathlib.Path('config/')
 CONFIG = configReader.readFile(config_folder / "config.json")
+if CONFIG['reddit']['praw_credentials']['client_id'] == 'REDDIT CLIENT ID HERE':
+    print("""WARNING: Config settings may not be setup correctly\nFollow instructions on README.rst and update config in 
+            config/config.json""")
 CSS_STYLE = configReader.readFile(config_folder / "style.json")
 
 # set logging

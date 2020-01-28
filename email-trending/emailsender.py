@@ -16,6 +16,14 @@ class ToManySenders(Error):
 
 
 def send_email(sender, sender_pwd, to_list, html_content, subject):
+    """Sends email from gmail account
+    Params (required):
+    - sender: from email address
+    - sender_pwd: from password
+    - to_list: list of email recipient addresses
+    - html_content: email body content
+    - subject: email subject
+    """
     sender_email = sender
     password = sender_pwd
 

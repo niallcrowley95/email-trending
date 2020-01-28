@@ -112,18 +112,15 @@ class GetRedditInfo:
 
                     # apply ratio_score
                     ratio = post.score / subscriber_amount
-                    results.append([
-                        post.title,
-                        post.subreddit,
-                        post.score,
-                        ratio,
-                        post.id,
-                        post.url,
-                        post.num_comments,
-                        datetime.fromtimestamp(post.created),
-                        post.selftext
-                    ])
-
+                    results.append([post.title,
+                                    post.subreddit,
+                                    post.score,
+                                    ratio,
+                                    post.id,
+                                    post.url,
+                                    post.num_comments,
+                                    datetime.fromtimestamp(post.created),
+                                    post.selftext])
             final = self.__order_results(results, column_headers, 'ratio', 'created')
         else:
             results = []
@@ -139,17 +136,14 @@ class GetRedditInfo:
                     if post.url in self.exclude:
                         continue
 
-                    results.append([
-                        post.title,
-                        post.subreddit,
-                        post.score,
-                        post.id,
-                        post.url,
-                        post.num_comments,
-                        datetime.fromtimestamp(post.created),
-                        post.selftext
-                    ])
-
+                    results.append([post.title,
+                                    post.subreddit,
+                                    post.score,
+                                    post.id,
+                                    post.url,
+                                    post.num_comments,
+                                    datetime.fromtimestamp(post.created),
+                                    post.selftext])
             final = self.__order_results(results, column_headers, 'score', 'created')
         if pd_dataframe:
             # return dataframe

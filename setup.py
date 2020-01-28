@@ -23,5 +23,6 @@ setup(
                       'pathlib',
                       'praw',
                       'newspaper3k',
-                      'requests']
+                      'requests',
+                      'nltk']
 )

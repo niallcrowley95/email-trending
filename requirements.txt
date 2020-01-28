@@ -6,4 +6,5 @@ pathlib
 praw
 newspaper3k
 requests
+nltk
 

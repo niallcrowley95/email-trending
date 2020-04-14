@@ -3,10 +3,6 @@
 ===========================================
 
 
-|PyPI pyversions|
-
-.. |PyPI pyversions| image:: https://img.shields.io/pypi/pyversions/ansicolortags.svg
-   :target: https://pypi.python.org/pypi/ansicolortags/
 |MIT license|
 
 .. |MIT license| image:: https://img.shields.io/badge/License-MIT-blue.svg
